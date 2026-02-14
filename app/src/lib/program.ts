@@ -15,7 +15,9 @@ const programIdString = process.env.NEXT_PUBLIC_PROGRAM_ID;
 
 export const IS_PROGRAM_CONFIGURED = !!programIdString;
 
-export const PROGRAM_ID = IS_PROGRAM_CONFIGURED ? new PublicKey(programIdString) : null;
+export const PROGRAM_ID = IS_PROGRAM_CONFIGURED
+  ? new PublicKey(programIdString as string)
+  : null;
 
 export function getProgram(connection: Connection, wallet: AnchorWallet) {
   const provider = new AnchorProvider(connection, wallet, {
@@ -26,10 +28,12 @@ export function getProgram(connection: Connection, wallet: AnchorWallet) {
 
 // PDA derivation helpers
 export function getConfigPda(): [PublicKey, number] {
+  if (!PROGRAM_ID) throw new Error("PROGRAM_NOT_CONFIGURED");
   return PublicKey.findProgramAddressSync([Buffer.from("config")], PROGRAM_ID);
 }
 
 export function getBoardPda(boardId: number): [PublicKey, number] {
+  if (!PROGRAM_ID) throw new Error("PROGRAM_NOT_CONFIGURED");
   const boardIdBuffer = Buffer.alloc(1);
   boardIdBuffer.writeUInt8(boardId);
   return PublicKey.findProgramAddressSync(
@@ -42,6 +46,7 @@ export function getThreadPda(
   boardId: number,
   threadId: bigint
 ): [PublicKey, number] {
+  if (!PROGRAM_ID) throw new Error("PROGRAM_NOT_CONFIGURED");
   const boardIdBuffer = Buffer.alloc(1);
   boardIdBuffer.writeUInt8(boardId);
   const threadIdBuffer = Buffer.alloc(8);
@@ -57,6 +62,7 @@ export function getPostPda(
   threadId: bigint,
   postId: bigint
 ): [PublicKey, number] {
+  if (!PROGRAM_ID) throw new Error("PROGRAM_NOT_CONFIGURED");
   const boardIdBuffer = Buffer.alloc(1);
   boardIdBuffer.writeUInt8(boardId);
   const threadIdBuffer = Buffer.alloc(8);
