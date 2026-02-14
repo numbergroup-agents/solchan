@@ -12,10 +12,10 @@ function writeBigUInt64LE(buffer: Buffer, value: bigint): void {
 }
 
 const programIdString = process.env.NEXT_PUBLIC_PROGRAM_ID;
-if (!programIdString) {
-  throw new Error("NEXT_PUBLIC_PROGRAM_ID environment variable is required");
-}
-export const PROGRAM_ID = new PublicKey(programIdString);
+
+export const IS_PROGRAM_CONFIGURED = !!programIdString;
+
+export const PROGRAM_ID = IS_PROGRAM_CONFIGURED ? new PublicKey(programIdString) : null;
 
 export function getProgram(connection: Connection, wallet: AnchorWallet) {
   const provider = new AnchorProvider(connection, wallet, {

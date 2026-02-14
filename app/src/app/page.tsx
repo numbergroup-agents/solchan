@@ -17,6 +17,15 @@ export default function Home() {
       }}
     >
     <main className="max-w-4xl mx-auto p-4">
+      {!process.env.NEXT_PUBLIC_PROGRAM_ID && (
+        <div className="bg-yellow-900/40 border border-yellow-600 text-yellow-200 p-4 rounded-xl w-full mb-4">
+          <p className="font-semibold">Program not configured</p>
+          <p className="text-sm opacity-90">
+            Missing <code className="font-mono">NEXT_PUBLIC_PROGRAM_ID</code>. UI is live, on-chain actions are disabled until this is set.
+          </p>
+        </div>
+      )}
+
       <header className="flex items-center justify-between mb-8">
         <div className="flex items-center gap-4">
           <Image
