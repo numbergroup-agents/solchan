@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+:root {
+  --background: #FFFFEE;
+  --foreground: #333333;
+  --card-bg: #F0E0D6;
+  --op-bg: #D6DAF0;
+  --maroon: #800000;
+  --link-blue: #0000EE;
+  --meta-gray: #666666;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: #FFFFEE !important;
+  color: #333333;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Force light mode everywhere */
+html, html.dark, :root, .dark {
+  color-scheme: light !important;
+  --background: #FFFFEE !important;
+  --foreground: #333333 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #FFFFEE !important;
+    --foreground: #333333 !important;
+  }
+
+  body {
+    background: #FFFFEE !important;
+    color: #333333 !important;
+  }
+}
+
+/* Wallet adapter button styling */
+.wallet-adapter-button {
+  background-color: #800000 !important;
+  border-radius: 6px !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.wallet-adapter-button:not([disabled]):hover {
+  background-color: #660000 !important;
+}
+
+.wallet-adapter-button-trigger {
+  background-color: #800000 !important;
+}
+
+/* Wallet modal wrapper (the actual modal box) */
+.wallet-adapter-modal-wrapper {
+  background-color: #F0E0D6 !important;
+  border: 1px solid #D9BFB7 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Modal title */
+.wallet-adapter-modal-title {
+  color: #800000 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+/* Close button */
+.wallet-adapter-modal-button-close {
+  background-color: #FFFFEE !important;
+  border: 1px solid #D9BFB7 !important;
+}
+
+.wallet-adapter-modal-button-close svg {
+  fill: #800000 !important;
+}
+
+.wallet-adapter-modal-button-close:hover {
+  background-color: #D6DAF0 !important;
+}
+
+.wallet-adapter-modal-button-close:hover svg {
+  fill: #660000 !important;
+}
+
+/* Wallet list items */
+.wallet-adapter-modal-list .wallet-adapter-button {
+  background-color: #FFFFEE !important;
+  color: #333333 !important;
+  border-bottom: 1px solid #D9BFB7 !important;
+}
+
+.wallet-adapter-modal-list .wallet-adapter-button:hover {
+  background-color: #D6DAF0 !important;
+}
+
+/* "More options" button */
+.wallet-adapter-modal-list-more {
+  color: #800000 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.wallet-adapter-modal-list-more svg {
+  fill: #800000 !important;
+}
+
+/* Dropdown menu (when wallet is connected) */
+.wallet-adapter-dropdown-list {
+  background-color: #F0E0D6 !important;
+  border: 1px solid #D9BFB7 !important;
+  border-radius: 6px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.wallet-adapter-dropdown-list-item {
+  color: #333333 !important;
+  font-family: Arial, Helvetica, sans-serif !important;
+}
+
+.wallet-adapter-dropdown-list-item:hover {
+  background-color: #D6DAF0 !important;
+}
